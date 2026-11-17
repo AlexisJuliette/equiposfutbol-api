@@ -1,9 +1,8 @@
 package com.unicartagena.equiposfutbol.domain.exceptions;
 
-public class DuplicateEquipoException extends RuntimeException {
+public final class DuplicateEquipoException extends RuntimeException {
 
-    public DuplicateEquipoException(String message) {
+    public DuplicateEquipoException() {
         super("Ya existe un equipo con ese nombre");
     }
-    
 }

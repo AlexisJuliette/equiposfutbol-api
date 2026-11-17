@@ -3,6 +3,7 @@ package com.unicartagena.equiposfutbol.domain.valueobjects;
 import com.unicartagena.equiposfutbol.domain.exceptions.InvalidEquipoDataException;
 
 public record NombreEquipo(String value) {
+
     private static final int MAX_LENGTH = 120;
 
     public NombreEquipo {

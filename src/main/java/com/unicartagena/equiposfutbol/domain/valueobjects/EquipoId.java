@@ -1,10 +1,11 @@
 package com.unicartagena.equiposfutbol.domain.valueobjects;
 
-import java.util.UUID;
-
 import com.unicartagena.equiposfutbol.domain.exceptions.InvalidEquipoDataException;
 
+import java.util.UUID;
+
 public record EquipoId(UUID value) {
+
     public EquipoId {
         if (value == null) {
             throw new InvalidEquipoDataException("El id del equipo es obligatorio");
