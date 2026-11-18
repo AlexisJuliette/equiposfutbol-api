@@ -1,11 +1,12 @@
 package com.unicartagena.equiposfutbol.adapter.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+import org.springframework.stereotype.Component;
 import com.unicartagena.equiposfutbol.domain.ports.out.PasswordEncoderPort;
 import com.unicartagena.equiposfutbol.domain.valueobjects.PasswordHash;
 import com.unicartagena.equiposfutbol.domain.valueobjects.RawPassword;
 
+@Component
 public class BCryptPasswordEncoderAdapter implements PasswordEncoderPort {
 
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

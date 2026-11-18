@@ -1,11 +1,16 @@
 package com.unicartagena.equiposfutbol.adapter.persistence.jpa;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.Instant;
 import java.util.UUID;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 
+@Entity
+@Table(name = "usuarios")
 public class UsuarioJpaEntity {
+
     @Id
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
@@ -74,5 +79,5 @@ public class UsuarioJpaEntity {
 
     public Instant getUpdatedAt() {
         return updatedAt;
-    }   
+    }
 }

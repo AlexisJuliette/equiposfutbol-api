@@ -1,10 +1,11 @@
 package com.unicartagena.equiposfutbol.adapter.security;
 
 import java.security.SecureRandom;
-
+import org.springframework.stereotype.Component;
 import com.unicartagena.equiposfutbol.domain.ports.out.PasswordGeneratorPort;
 import com.unicartagena.equiposfutbol.domain.valueobjects.RawPassword;
 
+@Component
 public class SecureRandomPasswordGenerator implements PasswordGeneratorPort {
 
     private static final String ALFABETO =

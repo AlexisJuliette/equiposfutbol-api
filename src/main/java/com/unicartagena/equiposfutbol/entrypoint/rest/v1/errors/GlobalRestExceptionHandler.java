@@ -3,6 +3,10 @@ package com.unicartagena.equiposfutbol.entrypoint.rest.v1.errors;
 import com.unicartagena.equiposfutbol.domain.exceptions.DuplicateEquipoException;
 import com.unicartagena.equiposfutbol.domain.exceptions.EquipoNotFoundException;
 import com.unicartagena.equiposfutbol.domain.exceptions.InvalidEquipoDataException;
+import com.unicartagena.equiposfutbol.domain.exceptions.DuplicateUserException;
+import com.unicartagena.equiposfutbol.domain.exceptions.InvalidCredentialsException;
+import com.unicartagena.equiposfutbol.domain.exceptions.InvalidUserDataException;
+import com.unicartagena.equiposfutbol.domain.exceptions.UserNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +49,30 @@ public class GlobalRestExceptionHandler {
     public ResponseEntity<ApiErrorResponse> handleInvalidData(
             InvalidEquipoDataException exception, HttpServletRequest request) {
         return build(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ApiErrorResponse> handleUserNotFound(
+            UserNotFoundException exception, HttpServletRequest request) {
+        return build(HttpStatus.NOT_FOUND, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(DuplicateUserException.class)
+    public ResponseEntity<ApiErrorResponse> handleUserDuplicate(
+            DuplicateUserException exception, HttpServletRequest request) {
+        return build(HttpStatus.CONFLICT, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(InvalidUserDataException.class)
+    public ResponseEntity<ApiErrorResponse> handleUserInvalidData(
+            InvalidUserDataException exception, HttpServletRequest request) {
+        return build(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ApiErrorResponse> handleInvalidCredentials(
+            InvalidCredentialsException exception, HttpServletRequest request) {
+        return build(HttpStatus.UNAUTHORIZED, exception.getMessage(), request, Map.of());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
