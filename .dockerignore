@@ -1,0 +1,8 @@
+target/
+.git/
+.github/
+.vscode/
+.mvn/
+*.md
+log.txt
+estructura.txt
