@@ -1,5 +1,6 @@
 package com.unicartagena.equiposfutbol.entrypoint.rest.v1.errors;
 
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 import com.unicartagena.equiposfutbol.domain.exceptions.DuplicateEquipoException;
 import com.unicartagena.equiposfutbol.domain.exceptions.EquipoNotFoundException;
 import com.unicartagena.equiposfutbol.domain.exceptions.InvalidEquipoDataException;
@@ -31,6 +32,11 @@ public class GlobalRestExceptionHandler {
 
     public GlobalRestExceptionHandler(Clock clock) {
         this.clock = clock;
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ApiErrorResponse> handleNoResource(HttpServletRequest request) {
+        return build(HttpStatus.NOT_FOUND, "El recurso solicitado no existe", request, Map.of());
     }
 
     @ExceptionHandler(EquipoNotFoundException.class)
