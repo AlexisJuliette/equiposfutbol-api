@@ -3,7 +3,7 @@
 API REST para la aplicación móvil **EquiposFutbol**, desarrollada con **arquitectura hexagonal**,
 persistencia en **PostgreSQL** y despliegue en **Render**.
 
-- **Estudiante:** Alexis Cera
+- **Estudiante:** Alexis Cerap
 - **Correo:** acerap@unicartagena.edu.co
 - **Ejercicio asignado:** 8 — EquiposFutbol
 - **Corte:** 2
