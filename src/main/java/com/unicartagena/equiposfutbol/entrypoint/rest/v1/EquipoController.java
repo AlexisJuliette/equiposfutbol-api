@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.MediaType;
 import java.net.URI;
 import java.util.List;
 import java.util.UUID;
@@ -57,7 +57,7 @@ public class EquipoController {
         this.equipoMapper = equipoMapper;
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.ALL_VALUE)
     public ResponseEntity<EquipoResponse> createEquipo(@Valid @RequestBody CreateEquipoRequest request) {
         EquipoResult result = createEquipoUseCase.createEquipo(equipoMapper.toCommand(request));
         EquipoResponse response = equipoMapper.toResponse(result);
@@ -76,7 +76,7 @@ public class EquipoController {
         return ResponseEntity.ok(EquipoListResponse.from(equipos));
     }
 
-    @PutMapping("/{equipoId}")
+    @PutMapping(value = "/{equipoId}", consumes = MediaType.ALL_VALUE)
     public ResponseEntity<EquipoResponse> updateEquipo(
             @PathVariable UUID equipoId,
             @Valid @RequestBody UpdateEquipoRequest request) {
